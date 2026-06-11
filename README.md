@@ -1,6 +1,6 @@
 # NeoBank Churn & LTV Intelligence Chatbot
 
-A full-stack chatbot for **customer churn prediction and LTV analysis** for neobanks. Python/Flask backend with a single-file HTML/CSS/JS frontend.
+A full-stack chatbot for customer churn and LTV analysis for neobanks. Python/Flask backend with HTML/CSS/JS in frontend.
 
 ---
 
