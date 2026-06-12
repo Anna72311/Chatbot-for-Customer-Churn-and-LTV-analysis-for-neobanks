@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from responses import get_response, TOPICS
+from responses import get_response, get_topics
 import os
 
 app = Flask(__name__)
@@ -16,14 +16,16 @@ def index():
 def chat():
     data = request.get_json()
     user_message = data.get("message", "").strip()
+    lang = data.get("lang", "en")
     if not user_message:
         return jsonify({"error": "No message provided"}), 400
-    response = get_response(user_message)
+    response = get_response(user_message, lang)
     return jsonify(response)
 
 @app.route("/api/topics", methods=["GET"])
 def topics():
-    return jsonify({"topics": TOPICS})
+    lang = request.args.get("lang", "en")
+    return jsonify({"topics": get_topics(lang)})
 
 @app.route("/api/health", methods=["GET"])
 def health():
